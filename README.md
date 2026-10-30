@@ -1,225 +1,162 @@
-# Awesome-Workflow-Automation-Engine
-
-## Top Workflow Automation Engine Ecosystem
-
-
-
-**Curated List of SaaS Products & Open-Source GitHub Projects**  
-
-*Focused on BPMN Process Engines, Durable Execution & Self-Hosted Orchestration*  
-
-**Last updated: October 2026**
-
-
-
-This repository tracks notable **SaaS platforms** and **open-source projects** for **Workflow Automation Engines**. These tools provide the foundational runtime for executing business processes—orchestrating tasks, managing state, handling retries, and coordinating human and system interactions—whether as visual low-code platforms or code-first durable execution engines.
-
-
-
-**Examples** include Atlassian Workflow Engine, Zapier, Make, Workato, Tray.io, n8n, Kissflow, Nintex, Camunda, and ServiceNow Flow Designer (the category leaders).
-
-
-
-**Open-source emphasis**: Workflow Automation Engines is a domain where open-source tooling is **exceptionally mature but bifurcated into two distinct architectures**. **BPMN-based engines** like **Camunda (Zeebe)** and **Flowable** provide standards-compliant process orchestration with visual modeling, human task management, and enterprise-grade state machines—Camunda's Zeebe powers Camunda Platform 8 with horizontal scaling and no relational database requirement , while Flowable offers a compact, Spring-integrated BPMN 2 engine under Apache 2.0 . **Durable execution engines** like **Temporal** (and its derivatives) take a code-first approach, guaranteeing workflow replay and state persistence across failures without BPMN constraints. **Windmill** bridges both worlds—a fast, open-source workflow engine and developer platform supporting TypeScript, Python, and Go with flows, scripts, and UIs . For visual event-driven automation, **Node-RED** provides low-code flow-based programming for IoT and API integration . For data pipeline orchestration, **Apache Airflow** remains the standard for programmatic DAG scheduling . The critical gap: **no open-source engine replicates the turnkey, no-code SaaS experience** of Zapier or Make—open-source engines require engineering expertise to deploy, model, and maintain.
-
-
-
-Contributions welcome! Open a PR to add/update entries. Keep descriptions factual and link to official sites.
-
-
-
-## Table of Contents
-
-- [SaaS/Hosted Platforms](#saas-products)
-
-- [Open-Source GitHub Projects](#open-source-github-projects)
-
-- [How to Contribute](#how-to-contribute)
-
-- [Disclaimer](#disclaimer)
-
-
-
-## SaaS/Hosted Platforms
-
-
-
-- **[Atlassian Workflow Engine](https://www.atlassian.com/)**  
-
-  Jira's native workflow engine with configurable statuses, transitions, conditions, validators, and post-functions; supports visual workflow editing and automation rules.
-
-
-
-- **[Zapier](https://zapier.com/)**  
-
-  Market-leading no-code automation platform with 9,000+ app integrations; trigger-and-action workflows for connecting SaaS tools without engineering effort.
-
-
-
-- **[Make](https://www.make.com/)**  
-
-  Visual automation platform with 3,000+ pre-built apps; Scenario Builder with If-Else, Merge, and iterators for complex data transformation.
-
-
-
-- **[Workato](https://www.workato.com/)**  
-
-  Enterprise automation platform with AI-powered recipe building, low-code connectors, and comprehensive security compliance (PCI-DSS, ISO 27001, SOC 2, HIPAA).
-
-
-
-- **[Tray.io](https://tray.ai/)**  
-
-  Low-code automation platform with powerful data transformation, workspaces, and hundreds of pre-built connectors plus custom connector builder.
-
-
-
-- **[n8n](https://n8n.io/)**  
-
-  Source-available automation platform with visual canvas and custom code; 1500+ integrations and AI-native capabilities (see open-source section for self-hosted details).
-
-
-
-- **[Kissflow](https://kissflow.com/)**  
-
-  Low-code workflow and process automation platform for business users; includes form builder, process designer, and approval workflows.
-
-
-
-- **[Nintex](https://www.nintex.com/)**  
-
-  Enterprise workflow automation with visual designer, forms, and document generation; strong for SharePoint and Microsoft 365 environments.
-
-
-
-- **[Camunda](https://camunda.com/)**  
-
-  BPMN-based process orchestration platform; Camunda 8 (powered by Zeebe) provides high-throughput, horizontally scalable workflow execution with visual modeling (see open-source section for Zeebe details).
-
-
-
-- **[ServiceNow Flow Designer](https://www.servicenow.com/)**  
-
-  Native workflow automation within ServiceNow; visual flow builder with actions, triggers, and integrations across the Now Platform.
-
-
-
-## Open-Source GitHub Projects
-
-
-
-### BPMN-Based Process Engines
-
-
-
-- **[Camunda Zeebe](https://github.com/camunda/camunda)**  
-
-  The workflow engine powering Camunda Platform 8 (Zeebe Community License 1.1, with Java/Go clients under Apache 2.0)  . Defines processes visually in **BPMN 2.0**, deploys with Docker/Kubernetes, reacts to Kafka and message queues, and **scales horizontally to very high throughput** with **no relational database required** (fault tolerance via replication) . Exports process data for monitoring and analysis. **The strongest open-source BPMN engine for high-throughput microservices orchestration**—but the core engine uses a source-available license, not OSI-approved.
-
-
-
-- **[Flowable](https://github.com/flowable/flowable-engine)**  
-
-  Compact, high-efficiency **BPMN 2 process engine** written in Java (Apache 2.0)  . Runs embedded in any Java application, on a server, cluster, or cloud; integrates perfectly with Spring; provides rich Java and REST APIs for orchestrating human or system activities. **The most permissively licensed BPMN engine** for teams wanting Apache 2.0 without source-available restrictions—best for Java/Spring ecosystems.
-
-
-
-- **[Activiti](https://github.com/Activiti/Activiti)**  
-
-  Lightweight BPMN 2 process engine for Java (Apache 2.0)  . Super-fast and rock-solid core; runs in any Java application, server, cluster, or cloud; integrates with Spring. **A mature, permissive alternative to Flowable** (Activiti and Flowable share lineage)—best for teams wanting a simpler BPMN engine without Flowable's additional modules.
-
-
-
-- **[Elsa Workflows](https://github.com/elsa-workflows/elsa-core)**  
-
-  Open-source workflow engine for **.NET** (MIT); visual designer (Elsa Studio) with BPMN-like modeling, long-running workflows with bookmarks and triggers, versioned definitions, and Docker deployment  . Supports HTTP triggers, timers, and message-based workflows. **The strongest open-source workflow engine for .NET teams**—but smaller ecosystem than Java-based alternatives.
-
-
-
-### Durable Execution Engines (Code-First)
-
-
-
-- **[Temporal](https://github.com/temporalio/temporal)**  
-
-  Open-source **durable execution platform** (MIT) for reliable, long-running workflows; workflows are code (Go, Java, TypeScript, Python, .NET, PHP, Ruby) with automatic state persistence, replay, and retry—no BPMN modeling required . Separates **workflow logic** (deterministic orchestration) from **activities** (non-deterministic external calls)  . Handles distributed transactions (saga pattern), entity workflows (shopping cart, account lifecycle), fan-out/fan-in, and human-in-the-loop approvals with timeouts . **The standard for code-first durable orchestration** when you need replayable state and clear execution timelines without visual modeling.
-
-
-
-- **[Windmill](https://github.com/windmill-labs/windmill)**  
-
-  Fast, open-source **workflow engine and developer platform** (AGPL-3.0) for building endpoints, workflows, and UIs in TypeScript, Python, Go, and more  . Features built-in IDE, **flows with branches/loops/approvals/retries**, scripts, low-code and full-code apps, data pipelines (alpha), and **Workflow-as-Code** (express a workflow as a single script) . Self-host via Helm or Docker Compose; cloud option with 1,000 monthly executions free. **The strongest open-source bridge between code-first and visual workflow**—for teams wanting developer flexibility with a UI.
-
-
-
-### Visual / Event-Driven Automation
-
-
-
-- **[Node-RED](https://github.com/node-red/node-red)**  
-
-  Open-source **flow-based programming tool** for event-driven applications (Apache 2.0)  . Browser-based drag-and-drop editor for wiring together hardware devices, APIs, and online services; supports HTTP, WebSocket, MQTT, database connections, and custom JavaScript function nodes. **The standard for IoT and integration-heavy event-driven automation**—lighter than BPMN engines but not designed for complex human task orchestration.
-
-
-
-- **[Apache Airflow](https://github.com/apache/airflow)**  
-
-  Open-source platform to **programmatically author, schedule, and monitor workflows** (Apache 2.0)  . Workflows defined as code (Python DAGs) become maintainable, versionable, testable, and collaborative; scheduler executes tasks on workers following dependencies; rich UI for visualization and troubleshooting. **The standard for data pipeline orchestration**—not a BPMN or human-workflow engine, but essential for batch/data-driven automation.
-
-
-
-### Additional Strong Open-Source Options
-
-
-
-- **Imixs-Workflow** — Human-centric BPMN 2.0 workflow engine (Java, 418 GitHub stars); focused on business process management with human tasks  .
-
-- **Goflow** — Simple but powerful DAG scheduler and dashboard in Go (483 GitHub stars)  .
-
-- **Cordum** — Governance-first control plane for AI agents and external workers (Go, 511 GitHub stars); policy-before-dispatch, approval gates, audit trails  .
-
-
-
-**Frameworks for building custom systems**: For **BPMN with high throughput and no database**, Camunda Zeebe . For **permissive Apache 2.0 BPMN in Java/Spring**, Flowable or Activiti . For **.NET workflows**, Elsa . For **code-first durable execution with replay**, Temporal . For **developer-friendly workflows with a UI in multiple languages**, Windmill . For **event-driven IoT/API automation**, Node-RED . For **data pipeline DAGs**, Airflow . No open-source engine matches the no-code SaaS simplicity of Zapier or Make—expect to invest in engineering, infrastructure, and ongoing maintenance.
-
-
-
-## How to Contribute
-
-
-
-1. Fork the repo.
-
-2. Add/edit entries in `README.md` (follow existing format).
-
-3. Include: name, link, 1–2 sentence description, and whether it's SaaS or open-source.
-
-4. Submit PR with a short explanation.
-
-
-
-Star the repo if you find it useful!
-
-
-
-## Disclaimer
-
-
-
-- This is a **community-curated** list — not exhaustive and not an endorsement.
-
-- Workflow automation engines handling business processes and credentials must comply with applicable security policies and data governance requirements; workflow state may contain sensitive business data requiring encryption and access controls.
-
-- **Open-source workflow engines are mature but require engineering investment**—Camunda Zeebe and Flowable provide production-grade BPMN orchestration , Temporal provides durable code-first execution , and Windmill bridges developer flexibility with visual flows . However, **no open-source engine replicates the turnkey, no-code experience** of Zapier or Make; deployment, modeling, and maintenance are your responsibility. Choose based on architectural fit (BPMN vs. code-first vs. event-driven) and team skills.
-
-- Verify license terms for commercial use; Camunda Zeebe uses the Zeebe Community License 1.1 (source-available, not OSI-approved) with Apache 2.0 clients , Flowable and Activiti use Apache 2.0 , Temporal uses MIT , Windmill uses AGPL-3.0 , and Node-RED/Airflow use Apache 2.0 .
-
-
+<div align="center">
+
+<img src="./assets/banner.svg" alt="Awesome Workflow Automation Engine Banner" width="100%" />
+
+# ⚡ Awesome Workflow Automation Engine
+
+> A curated list of production-grade workflow automation engines, BPMN process orchestrators, durable execution runtimes, and event-driven data flow systems.
+
+<!-- Badges Section -->
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a>
+  <a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Workflow-Automation-Engine/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Workflow-Automation-Engine?style=flat-square&color=gold" alt="Stars"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Workflow-Automation-Engine/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-Workflow-Automation-Engine?style=flat-square&color=blue" alt="Forks"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Workflow-Automation-Engine/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Workflow-Automation-Engine/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square" alt="License"/></a>
+  <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
+</p>
+
+<p align="center">
+  <a href="#-sector-overview--market-dynamics">Sector Overview</a> •
+  <a href="#-saashosted-platforms">SaaS Platforms</a> •
+  <a href="#-open-source-github-projects">Open-Source Engines</a> •
+  <a href="#-architectural-taxonomy">Architecture Matrix</a> •
+  <a href="#-star-history">Star History</a> •
+  <a href="#-contributing">Contributing</a> •
+  <a href="#-support">Support</a>
+</p>
+
+</div>
 
 ---
 
+## 🧭 Sector Overview & Market Dynamics
 
+The global workflow automation and process orchestration market is valued at approximately **$24.5 billion in 2026** (projected to reach **$45+ billion by 2031** at a ~13.8% CAGR). The sector exhibits **moderate fragmentation with bifurcation**: giant incumbent enterprise platforms (ServiceNow, Atlassian) capture high-value IT service orchestration, while a hyper-competitive, product-led layer (Zapier, Make, Workato) and developer-first durable execution runtimes (Temporal, n8n, Camunda) split developer and departmental adoption without a single winner-take-all outcome.
 
-**Made for platform engineers, integration architects, BPM practitioners, and workflow automation developers.**  
+---
 
-Let's make workflow automation more open, but with clear eyes about the engineering investment and architectural trade-offs that define each engine.
+## 🌐 SaaS/Hosted Platforms
+
+The table below catalogs premier commercial workflow automation engines and enterprise integration platforms, sorted in descending order by company scale (valuation or annual enterprise revenue run-rate):
+
+| Company / Product | Scale (Valuation / Revenue) | Starting Tier Pricing | Free Tier / Free Trial Limits | Key Engine Focus |
+|:---|:---:|:---:|:---:|:---|
+| 🏢 **[ServiceNow Flow Designer](https://www.servicenow.com/)** | **~$200B Market Cap** (~$11B+ Ann. Rev) | **$100 / user / month** (ServiceNow ITSM Pro contract minimum) | **14-day free developer instance (PDI)** with 1 developer sandbox (reclaims on inactivity) | Native enterprise ITIL workflow engine, approval chains, CMDB triggers, and low-code cross-enterprise action flows. |
+| 🔷 **[Atlassian Workflow Engine](https://www.atlassian.com/)** | **~$45B Market Cap** (~$4.5B+ Ann. Rev) | **$8.15 / user / month** (Jira Standard tier) | **Free forever plan for up to 10 users**; includes 100 global automation rule executions/month. | Jira native workflow state machine, configurable post-functions, transitions, validators, and no-code automation rules. |
+| ⚡ **[Zapier](https://zapier.com/)** | **~$5.0B Valuation** (~$300M+ ARR) | **$19.99 / month** billed annually ($29.99 billed monthly for Starter 750 tasks) | **Free forever plan**: 100 tasks/month, 5 active single-step Zaps, and 15-minute update frequency. | Market-defining consumer and business no-code automation engine with 9,000+ app connectors and multi-step branches. |
+| 🧩 **[Make](https://www.make.com/)** | **~$3.0B Valuation** (Acquired by Celonis) | **$9.00 / month** billed annually ($10.59 billed monthly for Core 10,000 ops) | **Free forever plan**: 1,000 operations/month, 100 MB data transfer, and 15-minute minimum execution interval. | Visual graph scenario builder with routers, iterators, aggregators, data manipulation, and execution tracking. |
+| 💼 **[Workato](https://www.workato.com/)** | **~$5.7B Valuation** (~$250M+ ARR) | **$10,000 / year base fee + pay-per-recipe** (~$833/month entry contract) | **14-day free trial** with full access to recipe builder, test environment, and standard enterprise connectors. | Enterprise integration & automation platform (iPaaS) with AI copilot recipes, governance, and SOC2/HIPAA compliance. |
+| 📑 **[Nintex](https://www.nintex.com/)** | **~$2.0B Valuation** (TPG Private Equity) | **$2,083 / month** billed annually ($25,000/year for Pro tier up to 50 active workflows) | **30-day free trial** with full designer access and unlimited test workflows for up to 30 days. | Process mapping, visual workflow designer, document generation, and enterprise SharePoint/M365 integration. |
+| 🔀 **[Camunda SaaS](https://camunda.com/)** | **~$1.2B Valuation** (~$150M+ ARR) | **$99 / month** (Starter plan with 5,000 process instances/month) | **Free forever plan**: 2 active cluster environments, up to 500 process executions/month with community support. | Enterprise cloud BPMN 2.0 and DMN orchestration powered by Zeebe with distributed execution and end-to-end audit trails. |
+| 🛠️ **[Tray.io](https://tray.ai/)** | **~$600M Valuation** (~$70M+ ARR) | **$595 / month** (Pro tier base with pooled credits) | **14-day free trial** with full access to Tray Merlin AI builder, workflow builder, and core connectors. | Low-code orchestration platform with enterprise Merlin AI automation, custom connector SDKs, and async error handling. |
+| 📈 **[Kissflow](https://kissflow.com/)** | **~$350M Valuation** (~$40M+ ARR) | **$1,500 / month** billed annually (Basic plan for corporate workflows) | **14-day free trial** with access for up to 50 users and all visual form and process designers. | Human-centric digital workplace automation, dynamic approval hierarchies, business process management, and form builders. |
+| 🪢 **[n8n Cloud](https://n8n.io/)** | **~$250M Valuation** (~$25M+ ARR) | **€20 / month** billed annually (€24 billed monthly for Starter 2,500 executions) | **14-day free trial of Cloud** (unlimited workflows) or **100% Free Self-Hosted Community Edition** with no execution caps. | Source-available visual automation canvas with JavaScript/Python code execution nodes, AI agent nodes, and 400+ connectors. |
+
+---
+
+## 🔓 Open-Source GitHub Projects
+
+The open-source workflow automation ecosystem is sorted in descending order by **GitHub Star Count**:
+
+### 🌟 Ranked Open-Source Repositories
+
+| Repository | GitHub Stars | License | Core Architecture & Description |
+|:---|:---:|:---:|:---|
+| 🪢 **[n8n](https://github.com/n8n-io/n8n)** | [![GitHub stars](https://img.shields.io/github/stars/n8n-io/n8n?style=social&color=white)](https://github.com/n8n-io/n8n/stargazers) | Sustainable Use License (Fair-code) | **Fair-code visual workflow automation platform with native AI agent nodes**. Combine drag-and-drop workflow canvas with inline JavaScript/Python, LangChain/MCP integrations, and 400+ pre-built connectors. |
+| 🦅 **[Huginn](https://github.com/huginn/huginn)** | [![GitHub stars](https://img.shields.io/github/stars/huginn/huginn?style=social&color=white)](https://github.com/huginn/huginn/stargazers) | MIT | **Autonomous agent orchestration system**. Build personalized web scrapers, automated event monitors, email dispatchers, and multi-agent cascades that read and take actions on the web on your behalf. |
+| 🌬️ **[Apache Airflow](https://github.com/apache/airflow)** | [![GitHub stars](https://img.shields.io/github/stars/apache/airflow?style=social&color=white)](https://github.com/apache/airflow/stargazers) | Apache-2.0 | **The enterprise standard programmatic DAG orchestration engine**. Author, schedule, and monitor data engineering workflows as code in Python with rich plugin ecosystem, SLA monitoring, and massive worker scaling. |
+| 🚂 **[Conductor](https://github.com/conductor-oss/conductor)** | [![GitHub stars](https://img.shields.io/github/stars/conductor-oss/conductor?style=social&color=white)](https://github.com/conductor-oss/conductor/stargazers) | Apache-2.0 | **Microservices and AI agent orchestration engine originally created by Netflix**. Highly resilient, durable state machine execution engine supporting polyglot workers, event routing, and distributed state persistence. |
+| 🧩 **[Activepieces](https://github.com/activepieces/activepieces)** | [![GitHub stars](https://img.shields.io/github/stars/activepieces/activepieces?style=social&color=white)](https://github.com/activepieces/activepieces/stargazers) | MIT / Commercial | **Open-source no-code workflow automation with MCP support**. Fast TypeScript-based Zapier alternative with 400+ community pieces, AI orchestration, self-hosting via Docker, and human-in-the-loop steps. |
+| 🎯 **[Prefect](https://github.com/PrefectHQ/prefect)** | [![GitHub stars](https://img.shields.io/github/stars/PrefectHQ/prefect?style=social&color=white)](https://github.com/PrefectHQ/prefect/stargazers) | Apache-2.0 | **Modern code-first workflow orchestration framework for Python**. Decorate regular functions with `@flow` and `@task` to gain automatic retries, dynamic distributed task mapping, logging, and observability. |
+| ⏳ **[Temporal](https://github.com/temporalio/temporal)** | [![GitHub stars](https://img.shields.io/github/stars/temporalio/temporal?style=social&color=white)](https://github.com/temporalio/temporal/stargazers) | MIT | **Industry-leading durable execution runtime**. Write fault-tolerant, stateful long-running workflows as standard code (Go, Java, TypeScript, Python, .NET, PHP) with deterministic replay, timeouts, and saga rollbacks. |
+| 🔴 **[Node-RED](https://github.com/node-red/node-red)** | [![GitHub stars](https://img.shields.io/github/stars/node-red/node-red?style=social&color=white)](https://github.com/node-red/node-red/stargazers) | Apache-2.0 | **Browser-based flow-driven event engine**. Visual wiring tool for hardware devices, APIs, and online services with thousands of pallet nodes; outstanding for IoT, real-time message brokers, and event pipelines. |
+| 💨 **[Windmill](https://github.com/windmill-labs/windmill)** | [![GitHub stars](https://img.shields.io/github/stars/windmill-labs/windmill?style=social&color=white)](https://github.com/windmill-labs/windmill/stargazers) | AGPL-3.0 / Commercial | **Extremely fast developer-first workflow engine and internal app builder**. Build distributed flows, endpoints, and UIs in TypeScript, Python, and Go with instant execution, auto-generated forms, and low resource overhead. |
+| 🐙 **[Argo Workflows](https://github.com/argoproj/argo-workflows)** | [![GitHub stars](https://img.shields.io/github/stars/argoproj/argo-workflows?style=social&color=white)](https://github.com/argoproj/argo-workflows/stargazers) | Apache-2.0 | **Kubernetes-native workflow engine**. Implemented as a Kubernetes CRD to orchestrate parallel jobs, compute-intensive ML pipelines, and CI/CD steps where each task executes in its own container pod. |
+| 📊 **[Dagster](https://github.com/dagster-io/dagster)** | [![GitHub stars](https://img.shields.io/github/stars/dagster-io/dagster?style=social&color=white)](https://github.com/dagster-io/dagster/stargazers) | Apache-2.0 | **Data-aware orchestrator focused on software-defined assets**. Combines workflow dependencies with asset tracking, testing, and built-in lineage visualization across modern data stacks. |
+| ⚡ **[Activiti](https://github.com/Activiti/Activiti)** | [![GitHub stars](https://img.shields.io/github/stars/Activiti/Activiti?style=social&color=white)](https://github.com/Activiti/Activiti/stargazers) | Apache-2.0 | **Lightweight, battle-tested BPMN 2.0 process engine for Java**. Embeddable inside Spring Boot applications or scalable on Kubernetes with Cloud-native microservices architecture and standard BPMN execution. |
+| 🌊 **[Flowable](https://github.com/flowable/flowable-engine)** | [![GitHub stars](https://img.shields.io/github/stars/flowable/flowable-engine?style=social&color=white)](https://github.com/flowable/flowable-engine/stargazers) | Apache-2.0 | **Permissively-licensed BPMN 2, CMMN 1.1, and DMN 1.2 business process engine**. Exceptional Spring Boot compatibility, lightning-fast relational database execution, and native human task orchestration. |
+| 🛡️ **[Cadence](https://github.com/cadence-workflow/cadence)** | [![GitHub stars](https://img.shields.io/github/stars/cadence-workflow/cadence?style=social&color=white)](https://github.com/cadence-workflow/cadence/stargazers) | Apache-2.0 | **Uber's battle-tested durable distributed workflow orchestrator**. Original architectural predecessor of Temporal, providing fault-tolerant stateful execution across heterogeneous microservice networks. |
+| 🪓 **[Hatchet](https://github.com/hatchet-dev/hatchet)** | [![GitHub stars](https://img.shields.io/github/stars/hatchet-dev/hatchet?style=social&color=white)](https://github.com/hatchet-dev/hatchet/stargazers) | MIT | **Distributed background task & durable workflow orchestrator**. Designed for low latency, rate limiting, concurrency controls, and complex workflows for modern AI pipelines and microservices in Go, Python, and TypeScript. |
+| ❄️ **[Elsa Workflows](https://github.com/elsa-workflows/elsa-core)** | [![GitHub stars](https://img.shields.io/github/stars/elsa-workflows/elsa-core?style=social&color=white)](https://github.com/elsa-workflows/elsa-core/stargazers) | MIT | **Premier open-source workflow library for .NET**. Visual studio workflow builder, long-running state management with bookmarks, HTTP triggers, cron schedules, and programmatic C# workflow definitions. |
+| ⚡ **[Inngest](https://github.com/inngest/inngest)** | [![GitHub stars](https://img.shields.io/github/stars/inngest/inngest?style=social&color=white)](https://github.com/inngest/inngest/stargazers) | BSL 1.1 / Apache-2.0 | **Event-driven durable execution engine for serverless and edge environments**. Step functions, retries, sleep-for-days, and AI function chaining without setting up infrastructure or worker queues. |
+| ⚙️ **[Camunda (Zeebe)](https://github.com/camunda/camunda)** | [![GitHub stars](https://img.shields.io/github/stars/camunda/camunda?style=social&color=white)](https://github.com/camunda/camunda/stargazers) | Zeebe Community License / BSL | **High-throughput, distributed cloud-native BPMN 2.0 orchestration engine**. Powers Camunda Platform 8 with append-only Raft consensus, zero relational database dependency, and linear horizontal scaling. |
+
+---
+
+## 🏛️ Architectural Taxonomy
+
+Understanding the technical trade-offs between different workflow engines:
+
+```mermaid
+flowchart TD
+    subgraph ArchitectureTypes["Workflow Automation Architectural Taxonomy"]
+        BPMN["BPMN 2.0 / Standards-Based<br/>(Visual State Machines &amp; Humans)"]
+        Durable["Code-First Durable Execution<br/>(Deterministic Replay &amp; Long-Running)"]
+        LowCode["Visual Integration &amp; AI Agents<br/>(Trigger-Action &amp; Connectors)"]
+        DataDAG["DAG &amp; Asset Pipelines<br/>(Scheduled Batch &amp; Data Warehousing)"]
+    end
+
+    BPMN --> C1["Camunda 8 (Zeebe)"]
+    BPMN --> C2["Flowable &amp; Activiti"]
+    BPMN --> C3["Elsa (.NET)"]
+
+    Durable --> D1["Temporal"]
+    Durable --> D2["Conductor"]
+    Durable --> D3["Cadence &amp; Inngest &amp; Hatchet"]
+
+    LowCode --> L1["n8n &amp; Activepieces"]
+    LowCode --> L2["Windmill"]
+    LowCode --> L3["Node-RED"]
+
+    DataDAG --> A1["Apache Airflow"]
+    DataDAG --> A2["Dagster"]
+    DataDAG --> A3["Prefect"]
+    DataDAG --> A4["Argo Workflows"]
+```
+
+---
+
+## 📈 Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=ishandutta2007/Awesome-Workflow-Automation-Engine&type=date&legend=top-left)](https://star-history.dera.page/#ishandutta2007/Awesome-Workflow-Automation-Engine&type=date&legend=top-left)
+
+---
+
+## 🤝 Contributing
+
+Contributions, new engine submissions, and corrections are warmly welcomed!
+
+1. 🍴 **Fork the repository**
+2. 🌿 **Create your branch**: `git checkout -b feature/add-new-workflow-engine`
+3. ✍️ **Add entry to `README.md`**: Follow the established table schemas (pricing details, free limits, or star badges)
+4. 🚀 **Submit a Pull Request** with a concise description of why this engine should be included
+
+Explore our master collection at [Awesome-Awesome-Awesome](https://github.com/ishandutta2007/Awesome-Awesome-Awesome).
+
+---
+
+## ☕ Support
+
+If you found this curated ecosystem map helpful for evaluating your organization's workflow automation or durable execution stack, please consider supporting the project!
+
+- ⭐ **Star this repository** to improve discoverability
+- 🍴 **Fork and share** with fellow architects and platform engineers
+- ☕ **Sponsor or buy a coffee**: [Sponsor ishandutta2007 on GitHub Sponsors](https://github.com/sponsors/ishandutta2007)
+
+Thank you for being part of the open-source automation community! 💖
+
+---
+
+## 📜 Disclaimer
+
+- This curated list is maintained for architectural research and community reference. Product names, logos, and brands belong to their respective copyright holders.
+- Pricing metrics, valuations, and free tier limits reflect published terms and enterprise benchmarks as of late 2026 and are subject to change by vendors.
+- Workflow automation engines process business-critical logic and sensitive credentials; ensure proper secret management, RBAC, and encryption are configured before production deployment.
+
+---
+
+<div align="center">
+  <b>Built with ❤️ for platform engineers, architects, and automation developers worldwide.</b>
+</div>
